@@ -18,7 +18,6 @@ config.read(config_path)
 BOT_TOKEN = config.get('Telegram', 'listen_bot_token')
 GROUP_FOR_LOGS = config.get('Telegram', 'group_for_logs')
 IMPORTANT_LOGS = config.get('Telegram', 'important_logs')
-PREVIEW_LINK = config.getboolean('Telegram', 'PREVIEW_LINK')
 #SETTINGS
 LOGS = config.getboolean('Settings', 'logs')
 
@@ -65,20 +64,15 @@ def telegram_bot():
         item1 = types.KeyboardButton("🎤Высказаться")
         item2 = types.KeyboardButton("🎧Послушать")
         markup.add(item1, item2)
-        bot.send_message(message.chat.id, "<b>Привет.</b>", parse_mode='html', reply_markup=markup,
-                         disable_web_page_preview=not PREVIEW_LINK)
+        bot.send_message(message.chat.id, "<b>Привет.</b>", parse_mode='html', reply_markup=markup)
         time.sleep(0.3)
-        bot.send_message(message.chat.id, "<i>Здесь можно послушать голосовые сообщения от совершенно незнакомых людей</i>", parse_mode='html', reply_markup=markup,
-                         disable_web_page_preview=not PREVIEW_LINK)
+        bot.send_message(message.chat.id, "<i>Здесь можно послушать голосовые сообщения от совершенно незнакомых людей</i>", parse_mode='html', reply_markup=markup)
         time.sleep(1)
-        bot.send_message(message.chat.id, "Это почти как написать письмо, положить его в бутылку и швырнуть в океан. Никогда не узнаешь, послушал его кто-то или нет и ответить тоже не получится..", parse_mode='html', reply_markup=markup,
-                         disable_web_page_preview=not PREVIEW_LINK)
+        bot.send_message(message.chat.id, "Это почти как написать письмо, положить его в бутылку и швырнуть в океан. Никогда не узнаешь, послушал его кто-то или нет и ответить тоже не получится..", parse_mode='html', reply_markup=markup)
         time.sleep(0.8)
-        bot.send_message(message.chat.id, "Если не знаешь, что сказать, можешь просто прочитать любое текстовое сообщение из недавно полученных или отправленных (или спеть, рассказать стихотворенье)", parse_mode='html', reply_markup=markup,
-                         disable_web_page_preview=not PREVIEW_LINK)
+        bot.send_message(message.chat.id, "Если не знаешь, что сказать, можешь просто прочитать любое текстовое сообщение из недавно полученных или отправленных (или спеть, рассказать стихотворенье)", parse_mode='html', reply_markup=markup)
         time.sleep(0.8)
-        msg = bot.send_message(message.chat.id, "<b>ну всё, достаточно инструкций. записывайся! Микрофон твой - </b> 🎤", parse_mode='html', reply_markup=markup,
-                         disable_web_page_preview=not PREVIEW_LINK)
+        msg = bot.send_message(message.chat.id, "<b>ну всё, достаточно инструкций. записывайся! Микрофон твой - </b> 🎤", parse_mode='html', reply_markup=markup)
         bot.register_next_step_handler(msg, standup)
 
 
